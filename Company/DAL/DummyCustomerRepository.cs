@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Company.DAL
 {
-    public class DummyCustomerRepository :ICustomerRepository
+    public class DummyCustomerRepository : ICustomerRepository
     {
         public DummyCustomerRepository()
         {
@@ -18,7 +18,7 @@ namespace Company.DAL
 
         }
 
-        public Customer GetCustomerById(int id)
+        public Customer GetCustomerByID(int id)
         {
             return new Customer()
             {
@@ -27,15 +27,15 @@ namespace Company.DAL
                 Country = "Ireland"
             };
         }
-        public List <Customer> GetCustomers()
+        public List<Customer> GetCustomers()
         {
             return new List<Customer>()
             {
                 new Customer()
                 {
                      CustomerID = "cust01",
-                ContactName = "Fake Name",
-                Country = "Ireland"
+                    ContactName = "Fake Name",
+                    Country = "Ireland"
                 }
             };
         }
