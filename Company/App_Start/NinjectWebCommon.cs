@@ -4,8 +4,10 @@
 namespace Company.App_Start
 {
     using System;
+    using System.Reflection;
     using System.Web;
-
+    using System.Web.Configuration;
+    using Company.DAL;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -61,6 +63,20 @@ namespace Company.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-        }        
+            //kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
+            //kernel.Bind<ICustomerRepository>().To<DummyCustomerRepository>();
+
+            string name = WebConfigurationManager.AppSettings["CustRepoSetting"];
+            Type repoToInject = Assembly.GetExecutingAssembly().GetType(name);
+
+            kernel.Bind<ICustomerRepository>().To(repoToInject);
+
+
+            name = WebConfigurationManager.AppSettings["ProdRepoSetting"];
+            repoToInject = Assembly.GetExecutingAssembly().GetType(name);
+
+            kernel.Bind<IProductRepository>().To(repoToInject);
+
+        }
     }
 }
