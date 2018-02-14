@@ -42,6 +42,7 @@ namespace Company.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
+            //here i got an error with kernel version 
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
