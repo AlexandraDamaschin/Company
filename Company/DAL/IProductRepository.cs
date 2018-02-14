@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Company.DAL
 {
-    public class IProductRepository
+    public interface IProductRepository
     {
         List<Product> GetProducts();
         Product GetProductByID(int id);
