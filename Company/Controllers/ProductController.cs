@@ -29,4 +29,4 @@ namespace Company.Controllers
             return View(repository.GetProductByID(id));
         }
     }
-    }
+}

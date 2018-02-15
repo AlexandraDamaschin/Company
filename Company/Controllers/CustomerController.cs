@@ -10,6 +10,7 @@ namespace Company.Controllers
     public class CustomerController : Controller
     {
         private ICustomerRepository repository;
+
         public CustomerController(ICustomerRepository repo)
         {
             repository = repo;
